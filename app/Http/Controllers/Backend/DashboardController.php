@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Backend\Utilities\Company;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -11,6 +12,6 @@ class DashboardController extends Controller
     {
         $title = 'Dashboard';
 
-        return view('backend.layouts.main', compact('title'));
+        return view('backend.dashbord.index', compact('title'));
     }
 }
