@@ -29,11 +29,29 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Company Profile</span>
         </li>
+        <!-- Home -->
         <li class="menu-item {{ Request::is('company-profile/home*') ? 'active' : '' }}">
-            <a href="#" class="menu-link">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-home"></i>
                 <div data-i18n="Home">Home</div>
             </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::is('company-profile/home/hero*') ? 'active' : '' }}">
+                    <a href="{{ route('home.hero.index') }}" class="menu-link">
+                        <div data-i18n="Hero">Hero</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('company-profile/home/about*') ? 'active' : '' }}">
+                    <a href="{{ route('home.about.index') }}" class="menu-link">
+                        <div data-i18n="About">About</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('company-profile/home/highlight*') ? 'active' : '' }}">
+                    <a href="{{ route('home.highlight.index') }}" class="menu-link">
+                        <div data-i18n="Highlight">Highlight</div>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li class="menu-item {{ Request::is('company-profile/features*') ? 'active' : '' }}">
             <a href="#" class="menu-link">
@@ -79,11 +97,6 @@
                         <div data-i18n="Navigation">Navigation</div>
                     </a>
                 </li>
-                {{-- <li class="menu-item">
-                    <a href="pages-account-settings-connections.html" class="menu-link">
-                        <div data-i18n="Connections">Connections</div>
-                    </a>
-                </li> --}}
             </ul>
         </li>
     </ul>

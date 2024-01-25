@@ -1,6 +1,6 @@
 <nav id="navbar" class="navbar">
     <ul>
-        <li><a class="{{ Request::is('home*') ? 'active' : '' }}" href="{{ route('home.index') }}">Home</a></li>
+        <li><a class="{{ Request::is('home*') ? 'active' : '' }}" href="{{ route('frontend.home.index') }}">Home</a></li>
         <li><a class="{{ Request::is('features*') ? 'active' : '' }}" href="#">Features</a></li>
         <li><a class="{{ Request::is('pricing*') ? 'active' : '' }}" href="#">Pricing</a></li>
         <li><a class="{{ Request::is('blog*') ? 'active' : '' }}" href="#">Blog</a></li>

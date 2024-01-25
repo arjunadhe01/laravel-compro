@@ -13,4 +13,14 @@ class StoreFileHelper
     {
         return 'ico/' . $name . '.' . $extension;
     }
+
+    public static function storeHeroImage($name, $extension)
+    {
+        return 'img/hero/' . $name . '.' . $extension;
+    }
+
+    public static function storeHighlightImage($name, $extension)
+    {
+        return 'img/highlight/' . $name . '.' . $extension;
+    }
 }

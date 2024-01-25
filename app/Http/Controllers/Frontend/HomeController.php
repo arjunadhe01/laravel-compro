@@ -11,6 +11,6 @@ class HomeController extends Controller
     {
         $title = 'Home';
 
-        return view('frontend.layouts.main', compact('title'));
+        return view('frontend.home.index', compact('title'));
     }
 }

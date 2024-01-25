@@ -114,7 +114,7 @@
                                                             </div>
                                                             <div class="col mb-0">
                                                                 <label for="url" class="form-label">URL</label>
-                                                                <input name="url" id="url" type="text"
+                                                                <input name="url" id="url" type="url"
                                                                     class="form-control @error('url') is-invalid @enderror"
                                                                     placeholder="https://github.com/Kuroyasha11"
                                                                     value="{{ old('url', $item->url) }}" />
@@ -181,7 +181,7 @@
                             </div>
                             <div class="col mb-0">
                                 <label for="url" class="form-label">URL</label>
-                                <input name="url" id="url" type="text"
+                                <input name="url" id="url" type="url"
                                     class="form-control @error('url') is-invalid @enderror"
                                     placeholder="https://github.com/Kuroyasha11" value="{{ old('url') }}" />
                             </div>

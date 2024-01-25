@@ -129,13 +129,13 @@
 @push('script')
     <script>
         function previewImage() {
-            const logos2 = document.querySelector('#logos');
+            const logos = document.querySelector('#logos');
             const imgPreview = document.querySelector('#uploadedAvatar');
 
             imgPreview.style.display = 'block';
 
             const oFReader = new FileReader();
-            oFReader.readAsDataURL(logos2.files[0]);
+            oFReader.readAsDataURL(logos.files[0]);
 
             oFReader.onload = function(oFREvent) {
                 imgPreview.src = oFREvent.target.result;
