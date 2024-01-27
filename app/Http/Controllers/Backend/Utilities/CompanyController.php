@@ -27,6 +27,9 @@ class CompanyController extends Controller
             'nickname' => 'required|max:12',
             'logos' => 'nullable|max:800',
             'ico' => 'nullable|max:500',
+            'address' => 'required',
+            'phone_number' => 'required',
+            'email' => 'required|email',
             'description' => 'nullable'
         ];
 
@@ -54,6 +57,9 @@ class CompanyController extends Controller
 
                     $company->ico = $request->file('ico')->storeAs($storeIco);
                 }
+                $company->address = $request->address;
+                $company->phone_number = $request->phone_number;
+                $company->email = $request->email;
                 $company->description = $request->description;
                 $company->save();
             } else {
@@ -80,6 +86,9 @@ class CompanyController extends Controller
 
                     $company->ico = $request->file('ico')->storeAs($storeIco);
                 }
+                $company->address = $request->address;
+                $company->phone_number = $request->phone_number;
+                $company->email = $request->email;
                 $company->description = $request->description;
                 $company->save();
             }

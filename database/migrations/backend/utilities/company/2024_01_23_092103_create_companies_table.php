@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('nickname');
             $table->string('logos')->nullable();
             $table->string('ico')->nullable();
+            $table->string('address');
+            $table->string('phone_number');
+            $table->string('email');
             $table->text('description')->nullable();
             $table->timestamps();
         });

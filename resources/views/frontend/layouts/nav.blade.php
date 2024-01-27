@@ -22,7 +22,8 @@
                 <li><a href="#">Drop Down 4</a></li>
             </ul>
         </li> --}}
-        <li><a class="{{ Request::is('contant*') ? 'active' : '' }}" href="#">Contact Us</a></li>
+        <li><a class="{{ Request::is('contact-us*') ? 'active' : '' }}"
+                href="{{ route('frontend.contact-us.index') }}">Contact Us</a></li>
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
 </nav>

@@ -90,4 +90,8 @@ Route::name('frontend.')->group(function () {
     Route::controller(App\Http\Controllers\Frontend\HomeController::class)->prefix('home')->name('home.')->group(function () {
         Route::get('/', 'index')->name('index');
     });
+    /* Contact Us */
+    Route::controller(App\Http\Controllers\Frontend\ContactUsController::class)->prefix('contact-us')->name('contact-us.')->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
 });

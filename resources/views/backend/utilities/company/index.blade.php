@@ -104,6 +104,46 @@
                         </div>
                     </div>
                     <div class="row mb-3">
+                        <label for="address" class="col-sm-2 col-form-label"> Address</label>
+                        <div class="col-sm-10">
+                            <textarea name="address" id="address" class="form-control @error('address') is-invalid @enderror"
+                                placeholder="Address" aria-label="Address">{{ old('address', $company->address ?? '') }}</textarea>
+                            @error('address')
+                                <div class="form-text text-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="phone_number">Phone Number <span
+                                class="text-danger fw-bolder">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control @error('phone_number') is-invalid @enderror"
+                                name="phone_number" id="phone_number" placeholder="+62 853 1111 2222"
+                                value="{{ old('phone_number', $company->phone_number ?? '') }}" />
+                            @error('phone_number')
+                                <div class="form-text text-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="email">Email <span
+                                class="text-danger fw-bolder">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                name="email" id="email" placeholder="dummy@example.com"
+                                value="{{ old('email', $company->email ?? '') }}" />
+                            @error('email')
+                                <div class="form-text text-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-3">
                         <label for="description" class="col-sm-2 col-form-label"> Description</label>
                         <div class="col-sm-10">
                             <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
