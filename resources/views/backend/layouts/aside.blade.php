@@ -60,7 +60,7 @@
             </a>
         </li>
         <li class="menu-item {{ Request::is('company-profile/pricing*') ? 'active' : '' }}">
-            <a href="#" class="menu-link">
+            <a href="{{ route('pricing.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-purchase-tag-alt"></i>
                 <div data-i18n="Pricing">Pricing</div>
             </a>

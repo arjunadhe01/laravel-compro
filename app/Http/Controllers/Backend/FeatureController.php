@@ -77,9 +77,12 @@ class FeatureController extends Controller
         $request->validate($rule);
 
         if ($request->status) {
-            $getFeature = Feature::all()->where('status', true);
-            if ($getFeature->count() >= 4) {
-                return back()->with('error', 'Active status for the "Feature" section is limited to four (4) options.');
+            $status = 1;
+            if ($feature->status !== $status) {
+                $getFeature = Feature::all()->where('status', true);
+                if ($getFeature->count() >= 4) {
+                    return back()->with('error', 'Active status for the "Feature" section is limited to four (4) options.');
+                }
             }
         }
 

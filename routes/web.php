@@ -64,6 +64,16 @@ Route::prefix('company-profile')->group(function () {
         Route::put('{feature}', 'update')->name('update');
         Route::delete('{feature}', 'destroy')->name('destroy');
     });
+    /* Pricing */
+    Route::controller(App\Http\Controllers\Backend\PricingController::class)->prefix('pricing')->name('pricing.')->middleware('auth')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
+        Route::get('{pricing}', 'show')->name('show');
+        Route::put('{pricing}', 'update')->name('update');
+        Route::delete('{pricing}', 'destroy')->name('destroy');
+        Route::post('{pricing}/detail', 'detailStore')->name('detailStore');
+        Route::delete('{pricingDetail}/detail', 'detailDestroy')->name('detailDestroy');
+    });
 });
 
 /* Utility */
@@ -107,6 +117,10 @@ Route::name('frontend.')->group(function () {
     });
     /* Feature */
     Route::controller(App\Http\Controllers\Frontend\FeatureController::class)->prefix('feature')->name('feature.')->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
+    /* Pricing */
+    Route::controller(App\Http\Controllers\Frontend\PricingController::class)->prefix('pricing')->name('pricing')->group(function () {
         Route::get('/', 'index')->name('index');
     });
     /* Contact Us */

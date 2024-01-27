@@ -136,9 +136,12 @@ class HomeController extends Controller
         $request->validate($rule);
 
         if ($request->status) {
-            $getAbout = About::all()->where('status', true);
-            if ($getAbout->count() >= 3) {
-                return back()->with('error', 'Active status for the "About" section is limited to three (3) options.');
+            $status = 1;
+            if ($about->status !== $status) {
+                $getAbout = About::all()->where('status', true);
+                if ($getAbout->count() >= 3) {
+                    return back()->with('error', 'Active status for the "About" section is limited to three (3) options.');
+                }
             }
         }
 
@@ -237,9 +240,12 @@ class HomeController extends Controller
         $request->validate($rule);
 
         if ($request->status) {
-            $getHighlight = Highlight::all()->where('status', true);
-            if ($getHighlight->count() >= 2) {
-                return back()->with('error', 'Active status for the "Highlight" section is limited to two (2) options.');
+            $status = 1;
+            if ($highlight->status !== $status) {
+                $getHighlight = Highlight::all()->where('status', true);
+                if ($getHighlight->count() >= 2) {
+                    return back()->with('error', 'Active status for the "Highlight" section is limited to two (2) options.');
+                }
             }
         }
 
