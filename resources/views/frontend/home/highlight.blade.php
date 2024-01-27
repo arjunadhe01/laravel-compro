@@ -1,5 +1,5 @@
-@if (HomeHelper::getHighlight()->count())
-    @foreach (HomeHelper::getHighlight() as $key => $item)
+@if ($highlight->count())
+    @foreach ($highlight as $key => $item)
         <section class="section">
             <div class="container">
                 <div class="row align-items-center">

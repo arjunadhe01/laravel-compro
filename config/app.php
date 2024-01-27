@@ -186,7 +186,6 @@ return [
         'StoreFileHelper' => App\Helpers\StoreFileHelper::class,
         'CompanyHelper' => App\Helpers\CompanyHelper::class,
         'FooterHelper' => App\Helpers\FooterHelper::class,
-        'HomeHelper' => App\Helpers\HomeHelper::class,
     ])->toArray(),
 
 ];

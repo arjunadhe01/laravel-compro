@@ -24,22 +24,16 @@
                     <div class="row">
                         <div class="col-lg-8 text-center text-lg-start">
                             <h1 data-aos="fade-right">
-                                {{ HomeHelper::getHero() && HomeHelper::getHero()['title']
-                                    ? HomeHelper::getHero()['title']
-                                    : 'Selamat Datang di Company Profile' }}
+                                {{ $hero && $hero->title ? $hero->title : 'Selamat Datang di Company Profile' }}
                             </h1>
                             <p class="mb-5" data-aos="fade-right" data-aos-delay="100">
-                                {{ HomeHelper::getHero() && HomeHelper::getHero()['subtitle']
-                                    ? HomeHelper::getHero()['subtitle']
-                                    : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' }}
+                                {{ $hero && $hero->subtitle ? $hero->subtitle : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' }}
                             </p>
                             <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="#main"
                                     class="btn btn-outline-white">Get started</a></p>
                         </div>
                         <div class="col-lg-4 text-center text-lg-end">
-                            <img src="{{ HomeHelper::getHero() && HomeHelper::getHero()['image']
-                                ? asset('storage/' . HomeHelper::getHero()['image'])
-                                : asset('assets/img/Kuroyasha.png') }}"
+                            <img src="{{ $hero && $hero->image ? asset('storage/' . $hero->image) : asset('assets/img/Kuroyasha.png') }}"
                                 alt="Hero Image" data-aos="fade-right"
                                 style="object-fit: contain; width: 350px; height: 350px;">
                         </div>

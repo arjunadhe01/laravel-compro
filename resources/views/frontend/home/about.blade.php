@@ -11,8 +11,8 @@
         </div>
 
         <div class="row">
-            @if (HomeHelper::getAbout()->count())
-                @foreach (HomeHelper::getAbout() as $item)
+            @if ($about->count())
+                @foreach ($about as $item)
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 - 100 }}">
                         <div class="feature-1 text-center">
                             <div class="wrap-icon icon-1">
