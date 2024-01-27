@@ -23,4 +23,9 @@ class StoreFileHelper
     {
         return 'img/highlight/' . $name . '.' . $extension;
     }
+
+    public static function storeReviewImage($name, $extension)
+    {
+        return 'img/review/' . $name . '.' . $extension;
+    }
 }

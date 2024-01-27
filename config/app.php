@@ -185,6 +185,7 @@ return [
         // 'Example' => App\Facades\Example::class,
         'StoreFileHelper' => App\Helpers\StoreFileHelper::class,
         'CompanyHelper' => App\Helpers\CompanyHelper::class,
+        'ReviewHelper' => App\Helpers\ReviewHelper::class,
         'FooterHelper' => App\Helpers\FooterHelper::class,
     ])->toArray(),
 

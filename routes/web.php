@@ -62,6 +62,12 @@ Route::prefix('utilities')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('update', 'update')->name('update');
     });
+    Route::controller(App\Http\Controllers\Backend\Utilities\ReviewController::class)->prefix('review')->name('review.')->middleware('auth')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('store', 'store')->name('store');
+        Route::put('{review}', 'update')->name('update');
+        Route::delete('{review}', 'destroy')->name('destroy');
+    });
     Route::controller(App\Http\Controllers\Backend\Utilities\FooterController::class)->prefix('footer')->name('footer.')->middleware('auth')->group(function () {
         Route::prefix('social-media')->name('social-media.')->group(function () {
             Route::get('/', 'socialMedia')->name('index');

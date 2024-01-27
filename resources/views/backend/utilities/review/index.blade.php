@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item">
                     <a href="{{ route('dashboard.index') }}">Home</a>
                 </li>
-                <li class="breadcrumb-item active">Highlight</li>
+                <li class="breadcrumb-item active">Review</li>
             </ol>
         </nav>
         <!-- Basic Breadcrumb -->
@@ -24,7 +24,7 @@
         @endif
 
         <div class="card">
-            <h3 class="card-head my-2 mx-2 mt-3">Highlight</h3>
+            <h3 class="card-head my-2 mx-2 mt-3">Review Customer</h3>
             <div class="card-body mx-2">
                 <div class="d-flex">
                     <div class="p-2">
@@ -33,30 +33,35 @@
                         </button>
                     </div>
                     <div class="p-2">
-                        <a href="{{ route('home.highlight.index') }}" class="btn btn-info">Refresh</a>
+                        <a href="{{ route('review.index') }}" class="btn btn-info">Refresh</a>
                     </div>
-                    <div class="ms-auto p-2">{{ $highlight->links() }}</div>
+                    <div class="ms-auto p-2">{{ $review->links() }}</div>
                 </div>
                 <div class="table-responsive text-nowrap" style="padding-bottom: 100px">
                     <table class="table">
                         <thead>
                             <tr align="center">
                                 <th width="30px">No</th>
-                                <th>Title</th>
-                                <th>Description</th>
+                                <th>Name</th>
+                                <th>Subject</th>
+                                <th>Message</th>
                                 <th>Status</th>
                                 <th width="30px">Image</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @if ($highlight->count())
-                                @foreach ($highlight as $item)
+                            @if ($review->count())
+                                @foreach ($review as $item)
                                     <tr>
-                                        <td align="center">{{ $highlight->firstItem() - 1 + $loop->iteration }}</td>
-                                        <td>{{ strlen($item->title) >= 12 ? substr($item->title, 0, 12) . '...' : $item->title }}
+                                        <td align="center">{{ $review->firstItem() - 1 + $loop->iteration }}</td>
+                                        <td>
+                                            {{ $item->name }} ({{ $item->star }} <span class="bi bi-star-fill"
+                                                style="color: gold;"></span>)
                                         </td>
-                                        <td>{{ strlen($item->description) >= 50 ? substr($item->description, 0, 50) . '...' : $item->description }}
+                                        <td>{{ strlen($item->subject) >= 12 ? substr($item->subject, 0, 12) . '...' : $item->subject }}
+                                        </td>
+                                        <td>{{ strlen($item->message) >= 50 ? substr($item->message, 0, 50) . '...' : $item->message }}
                                         </td>
                                         <td align="center">
                                             @if ($item->status)
@@ -79,8 +84,7 @@
                                                         data-bs-target="#editModal_{{ $item->id }}">
                                                         <i class="bx bx-edit-alt me-1"></i> Edit
                                                     </button>
-                                                    <form action="{{ route('home.highlight.destroy', $item->id) }}"
-                                                        method="post">
+                                                    <form action="{{ route('review.destroy', $item->id) }}" method="post">
                                                         @method('delete')
                                                         @csrf
                                                         <button type="submit" class="dropdown-item"
@@ -98,34 +102,50 @@
                                         <div class="modal-dialog modal-sm" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel2">Edit Highlight
+                                                    <h5 class="modal-title" id="exampleModalLabel2">Edit Review
                                                         {{ $item->title }}</h5>
                                                 </div>
-                                                <form action="{{ route('home.highlight.update', $item->id) }}"
-                                                    method="post" enctype="multipart/form-data">
+                                                <form action="{{ route('review.update', $item->id) }}" method="post"
+                                                    enctype="multipart/form-data">
                                                     @method('put')
                                                     @csrf
                                                     <div class="modal-body">
                                                         <div class="row">
                                                             <div class="col mb-3">
-                                                                <label for="title" class="form-label">Title</label>
-                                                                <input type="text" name="title" id="title"
-                                                                    class="form-control @error('title') is-invalid @enderror"
-                                                                    placeholder="Explore Your Team"
-                                                                    value="{{ old('title', $item->title) }}" />
+                                                                <label for="name" class="form-label">Name</label>
+                                                                <input type="text" name="name" id="name"
+                                                                    class="form-control @error('name') is-invalid @enderror"
+                                                                    placeholder="Kuroyasha"
+                                                                    value="{{ old('name', $item->name) }}" />
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col mb-3">
-                                                                <label for="description"
-                                                                    class="form-label">Description</label>
-                                                                <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
-                                                                    placeholder="Description" aria-label="Description">{{ old('description', $item->description) }}</textarea>
+                                                                <label for="subject" class="form-label">Subject</label>
+                                                                <input type="text" name="subject" id="subject"
+                                                                    class="form-control @error('subject') is-invalid @enderror"
+                                                                    placeholder="Perfect Company"
+                                                                    value="{{ old('subject', $item->subject) }}" />
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col mb-3">
-                                                                <div class="form-check form-switch">
+                                                                <label for="message" class="form-label">Message</label>
+                                                                <textarea name="message" id="message" class="form-control @error('message') is-invalid @enderror"
+                                                                    placeholder="Message" aria-label="message">{{ old('message', $item->message) }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row g-2">
+                                                            <div class="col mb-0">
+                                                                <label class="form-label" for="star">Star</label>
+                                                                <input type="number"
+                                                                    class="form-control @error('star') is-invalid @enderror"
+                                                                    name="star" id="star"
+                                                                    placeholder="Rate 0 - 5"
+                                                                    value="{{ old('star', $item->star) }}" />
+                                                            </div>
+                                                            <div class="col mb-0">
+                                                                <div class="form-check form-switch mt-4 pt-3 ms-4">
                                                                     <input class="form-check-input" type="checkbox"
                                                                         name="status" id="status"
                                                                         {{ old('status', $item->status) ? 'checked' : '' }} />
@@ -141,7 +161,7 @@
                                                                     class="form-control @error('image') is-invalid @enderror"
                                                                     type="file" name="image" id="image" />
                                                                 <div class="form-text">
-                                                                    JPG, JPEG or PNG. Maksimal 2mb
+                                                                    JPG, JPEG or PNG. Maksimal 800kb
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -160,7 +180,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="6" align="center">No Data</td>
+                                    <td colspan="7" align="center">No Data</td>
                                 </tr>
                             @endif
                         </tbody>
@@ -176,29 +196,43 @@
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel2">Add Highlight</h5>
+                    <h5 class="modal-title" id="exampleModalLabel2">Add Review</h5>
                 </div>
-                <form action="{{ route('home.highlight.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('review.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
                             <div class="col mb-3">
-                                <label for="title" class="form-label">Title</label>
-                                <input type="text" name="title" id="title"
-                                    class="form-control @error('title') is-invalid @enderror"
-                                    placeholder="Explore Your Team" value="{{ old('title') }}" />
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" name="name" id="name"
+                                    class="form-control @error('name') is-invalid @enderror" placeholder="Kuroyasha"
+                                    value="{{ old('name') }}" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col mb-3">
-                                <label for="description" class="form-label">Description</label>
-                                <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
-                                    placeholder="Description" aria-label="Description">{{ old('description') }}</textarea>
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" name="subject" id="subject"
+                                    class="form-control @error('subject') is-invalid @enderror"
+                                    placeholder="Perfect Company" value="{{ old('subject') }}" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col mb-3">
-                                <div class="form-check form-switch">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea name="message" id="message" class="form-control @error('message') is-invalid @enderror"
+                                    placeholder="Message" aria-label="message">{{ old('message') }}</textarea>
+                            </div>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col mb-0">
+                                <label class="form-label" for="star">Star</label>
+                                <input type="number" class="form-control @error('star') is-invalid @enderror"
+                                    name="star" id="star" placeholder="Rate 0 - 5"
+                                    value="{{ old('star') }}" />
+                            </div>
+                            <div class="col mb-0">
+                                <div class="form-check form-switch mt-4 pt-3 ms-4">
                                     <input class="form-check-input" type="checkbox" name="status" id="status"
                                         {{ old('status') ? 'checked' : '' }} />
                                     <label class="form-check-label" for="status">Status</label>
@@ -211,7 +245,7 @@
                                 <input class="form-control @error('image') is-invalid @enderror" type="file"
                                     name="image" id="image" />
                                 <div class="form-text">
-                                    JPG, JPEG or PNG. Maksimal 2mb
+                                    JPG, JPEG or PNG. Maksimal 800kb
                                 </div>
                             </div>
                         </div>
@@ -228,7 +262,11 @@
     </div>
 @endsection
 
-@ @push('script')
+@push('head')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+@endpush
+
+@push('script')
     <script>
         $('#createModal').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');

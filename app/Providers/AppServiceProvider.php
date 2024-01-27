@@ -16,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom([
             database_path('migrations'), // default
             database_path('migrations/backend/utilities/company'),
+            database_path('migrations/backend/utilities/review'),
             database_path('migrations/backend/utilities/footer'),
             database_path('migrations/backend/home'),
         ]);

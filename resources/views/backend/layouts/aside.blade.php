@@ -81,6 +81,12 @@
                 <div data-i18n="Company">Company</div>
             </a>
         </li>
+        <li class="menu-item {{ Request::is('utilities/review*') ? 'active' : '' }}">
+            <a href="{{ route('review.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-message-alt-detail"></i>
+                <div data-i18n="Review">Review</div>
+            </a>
+        </li>
         <li class="menu-item {{ Request::is('utilities/footer*') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
