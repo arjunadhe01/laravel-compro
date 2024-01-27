@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item">
                     <a href="{{ route('dashboard.index') }}">Home</a>
                 </li>
-                <li class="breadcrumb-item active">Highlight</li>
+                <li class="breadcrumb-item active">Feature</li>
             </ol>
         </nav>
         <!-- Basic Breadcrumb -->
@@ -24,7 +24,7 @@
         @endif
 
         <div class="card">
-            <h3 class="card-head my-2 mx-2 mt-3">Highlight</h3>
+            <h3 class="card-head my-2 mx-2 mt-3">Feature</h3>
             <div class="card-body mx-2">
                 <div class="d-flex">
                     <div class="p-2">
@@ -33,9 +33,9 @@
                         </button>
                     </div>
                     <div class="p-2">
-                        <a href="{{ route('home.highlight.index') }}" class="btn btn-info">Refresh</a>
+                        <a href="{{ route('feature.index') }}" class="btn btn-info">Refresh</a>
                     </div>
-                    <div class="ms-auto p-2">{{ $highlight->links() }}</div>
+                    <div class="ms-auto p-2">{{ $feature->links() }}</div>
                 </div>
                 <div class="table-responsive text-nowrap" style="padding-bottom: 100px">
                     <table class="table">
@@ -50,10 +50,10 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @if ($highlight->count())
-                                @foreach ($highlight as $item)
+                            @if ($feature->count())
+                                @foreach ($feature as $item)
                                     <tr>
-                                        <td align="center">{{ $highlight->firstItem() - 1 + $loop->iteration }}</td>
+                                        <td align="center">{{ $feature->firstItem() - 1 + $loop->iteration }}</td>
                                         <td>{{ strlen($item->title) >= 12 ? substr($item->title, 0, 12) . '...' : $item->title }}
                                         </td>
                                         <td>{{ strlen($item->description) >= 50 ? substr($item->description, 0, 50) . '...' : $item->description }}
@@ -79,8 +79,7 @@
                                                         data-bs-target="#editModal_{{ $item->id }}">
                                                         <i class="bx bx-edit-alt me-1"></i> Edit
                                                     </button>
-                                                    <form action="{{ route('home.highlight.destroy', $item->id) }}"
-                                                        method="post">
+                                                    <form action="{{ route('feature.destroy', $item->id) }}" method="post">
                                                         @method('delete')
                                                         @csrf
                                                         <button type="submit" class="dropdown-item"
@@ -98,11 +97,11 @@
                                         <div class="modal-dialog modal-sm" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel2">Edit Highlight
+                                                    <h5 class="modal-title" id="exampleModalLabel2">Edit Feature
                                                         {{ $item->title }}</h5>
                                                 </div>
-                                                <form action="{{ route('home.highlight.update', $item->id) }}"
-                                                    method="post" enctype="multipart/form-data">
+                                                <form action="{{ route('feature.update', $item->id) }}" method="post"
+                                                    enctype="multipart/form-data">
                                                     @method('put')
                                                     @csrf
                                                     <div class="modal-body">
@@ -111,7 +110,7 @@
                                                                 <label for="title" class="form-label">Title</label>
                                                                 <input type="text" name="title" id="title"
                                                                     class="form-control @error('title') is-invalid @enderror"
-                                                                    placeholder="Explore Your Team"
+                                                                    placeholder="Enterpise Solutions"
                                                                     value="{{ old('title', $item->title) }}" />
                                                             </div>
                                                         </div>
@@ -176,9 +175,9 @@
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel2">Add Highlight</h5>
+                    <h5 class="modal-title" id="exampleModalLabel2">Add Feature</h5>
                 </div>
-                <form action="{{ route('home.highlight.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('feature.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -186,7 +185,7 @@
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" name="title" id="title"
                                     class="form-control @error('title') is-invalid @enderror"
-                                    placeholder="Explore Your Team" value="{{ old('title') }}" />
+                                    placeholder="Enterpise Solutions" value="{{ old('title') }}" />
                             </div>
                         </div>
                         <div class="row">

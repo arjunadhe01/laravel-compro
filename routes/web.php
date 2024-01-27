@@ -37,47 +37,62 @@ Route::controller(App\Http\Controllers\Backend\DashboardController::class)->pref
 Route::prefix('company-profile')->group(function () {
     /* Home */
     Route::controller(App\Http\Controllers\Backend\HomeController::class)->prefix('home')->name('home.')->middleware('auth')->group(function () {
+        /* Hero */
         Route::prefix('hero')->name('hero.')->group(function () {
             Route::get('/', 'heroIndex')->name('index');
-            Route::post('update', 'heroUpdate')->name('update');
+            Route::post('/', 'heroUpdate')->name('update');
         });
+        /* About */
         Route::prefix('about')->name('about.')->group(function () {
             Route::get('/', 'aboutIndex')->name('index');
-            Route::post('store', 'aboutStore')->name('store');
+            Route::post('/', 'aboutStore')->name('store');
             Route::put('{about}', 'aboutUpdate')->name('update');
             Route::delete('{about}', 'aboutDestroy')->name('destroy');
         });
+        /* Highlight */
         Route::prefix('highlight')->name('highlight.')->group(function () {
             Route::get('/', 'highlightIndex')->name('index');
-            Route::post('store', 'highlightStore')->name('store');
+            Route::post('/', 'highlightStore')->name('store');
             Route::put('{highlight}', 'highlightUpdate')->name('update');
             Route::delete('{highlight}', 'highlightDestroy')->name('destroy');
         });
+    });
+    /* Feature */
+    Route::controller(App\Http\Controllers\Backend\FeatureController::class)->prefix('feature')->name('feature.')->middleware('auth')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
+        Route::put('{feature}', 'update')->name('update');
+        Route::delete('{feature}', 'destroy')->name('destroy');
     });
 });
 
 /* Utility */
 Route::prefix('utilities')->group(function () {
+    /* Company */
     Route::controller(App\Http\Controllers\Backend\Utilities\CompanyController::class)->prefix('company')->name('company.')->middleware('auth')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('update', 'update')->name('update');
     });
+    /* Review */
     Route::controller(App\Http\Controllers\Backend\Utilities\ReviewController::class)->prefix('review')->name('review.')->middleware('auth')->group(function () {
         Route::get('/', 'index')->name('index');
-        Route::post('store', 'store')->name('store');
+        Route::post('/', 'store')->name('store');
         Route::put('{review}', 'update')->name('update');
         Route::delete('{review}', 'destroy')->name('destroy');
     });
+    /* Footer */
     Route::controller(App\Http\Controllers\Backend\Utilities\FooterController::class)->prefix('footer')->name('footer.')->middleware('auth')->group(function () {
+        /* Social Media */
         Route::prefix('social-media')->name('social-media.')->group(function () {
             Route::get('/', 'socialMedia')->name('index');
-            Route::post('store', 'socialMediaStore')->name('store');
+            Route::post('/', 'socialMediaStore')->name('store');
             Route::put('{socialMedia}', 'socialMediaUpdate')->name('update');
             Route::delete('{socialMedia}', 'socialMediaDestroy')->name('destroy');
         });
+        /* Navigation */
         Route::prefix('navigation')->name('navigation.')->group(function () {
             Route::get('/', 'navigation')->name('index');
-            Route::post('store', 'navigationStore')->name('store');
+            Route::post('/', 'navigationStore')->name('store');
             Route::put('{navigation}', 'navigationUpdate')->name('update');
             Route::delete('{navigation}', 'navigationDestroy')->name('destroy');
         });
@@ -88,6 +103,10 @@ Route::prefix('utilities')->group(function () {
 Route::name('frontend.')->group(function () {
     /* Home */
     Route::controller(App\Http\Controllers\Frontend\HomeController::class)->prefix('home')->name('home.')->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
+    /* Feature */
+    Route::controller(App\Http\Controllers\Frontend\FeatureController::class)->prefix('feature')->name('feature.')->group(function () {
         Route::get('/', 'index')->name('index');
     });
     /* Contact Us */

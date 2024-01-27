@@ -27,7 +27,7 @@
                                         </blockquote>
 
                                         <p class="review-user">
-                                            <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('assets/frontend/assets/img/person_2.jpg') }}"
+                                            <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('assets/img/Kuro.png') }}"
                                                 alt="Image" class="img-fluid rounded-circle mb-3"
                                                 style="object-fit: contain; width: 100px; height: 100px;">
                                             <span class="d-block">

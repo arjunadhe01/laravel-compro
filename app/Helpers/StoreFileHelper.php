@@ -28,4 +28,9 @@ class StoreFileHelper
     {
         return 'img/review/' . $name . '.' . $extension;
     }
+
+    public static function storeFeatureImage($name, $extension)
+    {
+        return 'img/feature/' . $name . '.' . $extension;
+    }
 }

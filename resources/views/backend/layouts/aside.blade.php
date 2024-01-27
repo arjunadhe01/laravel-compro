@@ -54,7 +54,7 @@
             </ul>
         </li>
         <li class="menu-item {{ Request::is('company-profile/features*') ? 'active' : '' }}">
-            <a href="#" class="menu-link">
+            <a href="{{ route('feature.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-layer"></i>
                 <div data-i18n="Features">Features</div>
             </a>
