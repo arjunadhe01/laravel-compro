@@ -74,6 +74,29 @@ Route::prefix('company-profile')->group(function () {
         Route::post('{pricing}/detail', 'detailStore')->name('detailStore');
         Route::delete('{pricingDetail}/detail', 'detailDestroy')->name('detailDestroy');
     });
+    Route::prefix('blog')->name('blog.')->middleware('auth')->group(function () {
+        Route::controller(App\Http\Controllers\Backend\BlogController::class)->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            // Route::get('{blog}', 'show')->name('show');
+            Route::get('{blog}/edit', 'edit')->name('edit');
+            Route::put('{blog}', 'update')->name('update');
+            Route::delete('{blog}', 'destroy')->name('destroy');
+        });
+        Route::controller(App\Http\Controllers\Backend\CategoryController::class)->prefix('category')->name('category.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/', 'store')->name('store');
+            Route::put('{category}', 'update')->name('update');
+            Route::delete('{category}', 'destroy')->name('destroy');
+        });
+        Route::controller(App\Http\Controllers\Backend\TagController::class)->prefix('tag')->name('tag.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/', 'store')->name('store');
+            Route::put('{tag}', 'update')->name('update');
+            Route::delete('{tag}', 'destroy')->name('destroy');
+        });
+    });
 });
 
 /* Utility */
@@ -122,6 +145,11 @@ Route::name('frontend.')->group(function () {
     /* Pricing */
     Route::controller(App\Http\Controllers\Frontend\PricingController::class)->prefix('pricing')->name('pricing')->group(function () {
         Route::get('/', 'index')->name('index');
+    });
+    /* Blog */
+    Route::controller(App\Http\Controllers\Frontend\BlogController::class)->prefix('blog')->name('blog.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('{blog}', 'show')->name('show');
     });
     /* Contact Us */
     Route::controller(App\Http\Controllers\Frontend\ContactUsController::class)->prefix('contact-us')->name('contact-us.')->group(function () {

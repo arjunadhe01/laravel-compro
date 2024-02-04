@@ -187,6 +187,7 @@ return [
         'CompanyHelper' => App\Helpers\CompanyHelper::class,
         'ReviewHelper' => App\Helpers\ReviewHelper::class,
         'FooterHelper' => App\Helpers\FooterHelper::class,
+        'BlogHelper' => App\Helpers\BlogHelper::class,
     ])->toArray(),
 
 ];

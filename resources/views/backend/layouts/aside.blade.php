@@ -66,10 +66,28 @@
             </a>
         </li>
         <li class="menu-item {{ Request::is('company-profile/blog*') ? 'active' : '' }}">
-            <a href="#" class="menu-link">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxl-blogger"></i>
                 <div data-i18n="Blog">Blog</div>
             </a>
+            <ul class="menu-sub">
+                <li
+                    class="menu-item {{ Request::is('company-profile/blog*') && !Request::is('company-profile/blog/category*') && !Request::is('company-profile/blog/tag*') ? 'active' : '' }}">
+                    <a href="{{ route('blog.index') }}" class="menu-link">
+                        <div data-i18n="Blog">Blog</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('company-profile/blog/category*') ? 'active' : '' }}">
+                    <a href="{{ route('blog.category.index') }}" class="menu-link">
+                        <div data-i18n="Category">Category</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('company-profile/blog/tag*') ? 'active' : '' }}">
+                    <a href="{{ route('blog.tag.index') }}" class="menu-link">
+                        <div data-i18n="Tag">Tag</div>
+                    </a>
+                </li>
+            </ul>
         </li>
 
         <!-- Utilities -->

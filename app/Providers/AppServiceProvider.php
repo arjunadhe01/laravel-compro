@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
             database_path('migrations/backend/home'),
             database_path('migrations/backend/feature'),
             database_path('migrations/backend/pricing'),
+            database_path('migrations/backend/blog'),
         ]);
     }
 

@@ -16,7 +16,7 @@
         <div class="card">
             <h3 class="card-head my-2 mx-2 mt-3">Hero </h3>
             <div class="card-body mx-2">
-                <form action="{{ route('home.hero.heroUpdate') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('home.hero.update') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="title">Title <span

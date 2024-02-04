@@ -33,4 +33,9 @@ class StoreFileHelper
     {
         return 'img/feature/' . $name . '.' . $extension;
     }
+
+    public static function storeBlogImage($name, $extension)
+    {
+        return 'img/blog/' . $name . '.' . $extension;
+    }
 }

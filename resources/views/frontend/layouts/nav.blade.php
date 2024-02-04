@@ -5,7 +5,7 @@
                 href="{{ route('frontend.feature.index') }}">Features</a></li>
         <li><a class="{{ Request::is('pricing*') ? 'active' : '' }}"
                 href="{{ route('frontend.pricingindex') }}">Pricing</a></li>
-        <li><a class="{{ Request::is('blog*') ? 'active' : '' }}" href="#">Blog</a></li>
+        <li><a class="{{ Request::is('blog*') ? 'active' : '' }}" href="{{ route('frontend.blog.index') }}">Blog</a></li>
         {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
                 <li><a href="#">Drop Down 1</a></li>

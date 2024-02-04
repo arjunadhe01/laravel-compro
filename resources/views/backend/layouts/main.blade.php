@@ -168,6 +168,9 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
+    {{-- CKEDITOR --}}
+    <script src="{{ asset('ckeditor-full/ckeditor.js') }}"></script>
+
     {{-- Loader --}}
     <script>
         $(document).ready(function() {
