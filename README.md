@@ -35,11 +35,4 @@ Aplikasi Company Profile atau ComPro yang dibuat menggunakan :
 
 Selamat Mencoba :)
 
-## Kontak
-- **Nama:** [Ricky Andrean]
-- **Email:** [Rickyandrean41@gmail.com]
-- **LinkedIn:** [https://www.linkedin.com/in/ricky-andrean/]
-- **Instagram:** [https://www.instagram.com/rickyand__]
 
-## Portofolio
-https://kuroyasha11.github.io/Portfolio-Ricky-Andrean/
