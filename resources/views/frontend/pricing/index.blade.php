@@ -3,20 +3,16 @@
 @push('hero')
     <div class="hero-section inner-page">
         <div class="wave">
-
             <svg width="1920px" height="265px" viewBox="0 0 1920 265" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
-                        <path
-                            d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z"
+                        <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z"
                             id="Path"></path>
                     </g>
                 </g>
             </svg>
-
         </div>
-
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12">
@@ -28,21 +24,18 @@
                 </div>
             </div>
         </div>
-
     </div>
 @endpush
 
 @section('content')
     <section class="section">
         <div class="container">
-
             <div class="row justify-content-center text-center">
                 <div class="col-md-7 mb-5">
                     <h2 class="section-heading">Choose A Product</h2>
                 </div>
             </div>
             <div class="row align-items-stretch">
-
                 @if ($pricing->count())
                     @foreach ($pricing as $item)
                         <div class="col-lg-4 my-4 mb-lg-0">
@@ -52,6 +45,14 @@
                                 @else
                                     <span class="popularity">{{ $item->category }}</span>
                                 @endif
+                                
+                                {{-- Tentukan gambar produk --}}
+                                @if ($item->image)
+                                <img src="{{ asset('storage/pricing_photos/' . $item->image) }}" alt="{{ $item->title }}" class="img-fluid mb-3" style="max-height: 200px; object-fit: cover;">
+                            @else
+                                <img src="{{ asset('storage/pricing_photos/default.jpg') }}" alt="Default Image" class="img-fluid mb-3" style="max-height: 200px; object-fit: cover;">
+                            @endif
+
                                 <h3>{{ $item->title }}</h3>
                                 <ul class="list-unstyled">
                                     @if ($item->detail->count())
@@ -91,37 +92,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <div class="pricing h-100 text-center popular">
-                            <span class="popularity">Most Popular</span>
-                            <h3>Professional</h3>
-                            <ul class="list-unstyled">
-                                <li>Create up to 20 forms</li>
-                                <li>Generate 2500 monthly reports</li>
-                                <li>Manage a team of up to 5 people</li>
-                            </ul>
-                            <div class="price-cta">
-                                <strong class="price">$9.95/month</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <div class="pricing h-100 text-center">
-                            <span class="popularity">Best Value</span>
-                            <h3>Ultimate</h3>
-                            <ul class="list-unstyled">
-                                <li>Create up to 20 forms</li>
-                                <li>Generate 2500 monthly reports</li>
-                                <li>Manage a team of up to 5 people</li>
-                            </ul>
-                            <div class="price-cta">
-                                <strong class="price">$199.95/month</strong>
-                            </div>
-                        </div>
-                    </div>
                 @endif
-
-
             </div>
         </div>
     </section>

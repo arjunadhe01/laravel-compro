@@ -42,14 +42,14 @@
         <div class="container d-flex justify-content-between align-items-center">
 
             <div class="logo">
-                <h1><a
+               <!-- <h1><a
                         href="{{ route('frontend.home.index') }}">{{ CompanyHelper::get() && CompanyHelper::get()['nickname'] ? CompanyHelper::get()['nickname'] : 'Kuroyasha' }}</a>
-                </h1>
+                </h1> -->
                 <!-- Uncomment below if you prefer to use an image logo -->
-                {{-- <a href="{{ route('frontend.home.index') }}">
+                 <a href="{{ route('frontend.home.index') }}">
                     <img src="{{ CompanyHelper::get() && CompanyHelper::get()['logos'] ? asset('storage/' . CompanyHelper::get()['logos']) : asset('assets/img/Kuroyasha.png') }}"
-                        alt="Kuroyasha" style="width: 46px; height: 46px; object-fit: contain;" class="img-fluid">
-                </a> --}}
+                        alt="Kuroyasha" style="width: 80px; height: 80px; object-fit: contain;" class="img-fluid">
+                </a> 
             </div>
 
             @include('frontend.layouts.nav')<!-- .navbar -->

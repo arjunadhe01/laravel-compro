@@ -34,7 +34,7 @@ class ReviewController extends Controller
 
         if ($request->status) {
             $getReview = Review::all()->where('status', true);
-            if ($getReview->count() >= 3) {
+            if ($getReview->count() >= 10) {
                 return back()->with('error', 'Active status for the "Review" section is limited to three (3) options.');
             }
         }
@@ -86,7 +86,7 @@ class ReviewController extends Controller
             $status = 1;
             if ($review->status !== $status) {
                 $getReview = Review::all()->where('status', true);
-                if ($getReview->count() >= 3) {
+                if ($getReview->count() >= 10) {
                     return back()->with('error', 'Active status for the "Highlight" section is limited to three (3) options.');
                 }
             }

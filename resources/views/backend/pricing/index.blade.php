@@ -46,6 +46,7 @@
                                 <th>Category</th>
                                 <th width="30px">Best Product</th>
                                 <th>Price</th>
+                                <th>Photo</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -67,6 +68,13 @@
                                         </td>
                                         <td align="right">
                                             @IDR($item->price)
+                                            <td align="center">
+                                                @if ($item->photo)
+                                                    <img src="{{ asset('storage/' . $item->photo) }}" alt="Foto" width="50px">
+                                                @else
+                                                    -
+                                                @endif
+                                            </td>
                                             @if ($item->payment_period == \App\Models\Backend\Pricing\Pricing::MONTHLY_PAYMENT)
                                                 / Month
                                             @elseif ($item->payment_period == \App\Models\Backend\Pricing\Pricing::ANNUAL_PAYMENT)
@@ -107,7 +115,8 @@
                                                     <h5 class="modal-title" id="exampleModalLabel2">Edit Pricing
                                                         {{ $item->title }}</h5>
                                                 </div>
-                                                <form action="{{ route('pricing.update', $item->id) }}" method="post">
+                                               <form action="{{ route('pricing.update', $item->id) }}" method="post" enctype="multipart/form-data">
+
                                                     @method('put')
                                                     @csrf
                                                     <div class="modal-body">
@@ -132,9 +141,8 @@
                                                         <div class="row ">
                                                             <div class="col mb-3">
                                                                 <div class="form-check form-switch">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        name="best" id="best"
-                                                                        {{ old('best', $item->best) ? 'checked' : '' }} />
+                                                                   <input class="form-check-input" type="checkbox" name="best" id="best"
+                                                                       {{ old('best', $item->best) ? 'checked' : '' }} />
                                                                     <label class="form-check-label" for="best">Best
                                                                         Product</label>
                                                                 </div>
@@ -148,8 +156,19 @@
                                                                     placeholder="0"
                                                                     value="{{ old('price', $item->price) }}" />
                                                             </div>
+                                                            
                                                         </div>
                                                         <div class="row">
+                                                        <div class="col mb-3">
+                                                            <label for="photo" class="form-label">Foto Produk</label>
+                                                           <input type="file" name="photo" id="photo" class="form-control" accept="image/*">
+
+                                                            @if ($item->photo)
+                                                                <img src="{{ asset('storage/' . $item->photo) }}" alt="Foto" width="50px" class="mt-2">
+                                                            @endif
+                                                        </div>
+                                                      </div>
+                                                            <div class="row">
                                                             <div class="col mb-3">
                                                                 <label for="payment_period" class="form-label">Period
                                                                     Payment</label>
@@ -198,7 +217,8 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel2">Add Pricing</h5>
                 </div>
-                <form action="{{ route('pricing.store') }}" method="post">
+                <form action="{{ route('pricing.store') }}" method="post" enctype="multipart/form-data">
+
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -248,6 +268,10 @@
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
+                                 <label for="photo">Photo</label>
+                                    <input type="file" name="photo" accept="image/*" class="form-control">
+
+
                             </div>
                         </div>
                     </div>

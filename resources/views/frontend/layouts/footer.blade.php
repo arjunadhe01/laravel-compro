@@ -32,7 +32,7 @@
 
         <div class="row justify-content-center text-center">
             <div class="col-md-7">
-                <p class="copyright">&copy; Copyright Kuroyasha. All Rights Reserved</p>
+                <p class="copyright">&copy; Karya Cita Usaha</p>
                 {{-- <div class="credits">
                     Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
                 </div> --}}

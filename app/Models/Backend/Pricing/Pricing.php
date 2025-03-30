@@ -17,6 +17,7 @@ class Pricing extends Model
         'best',
         'price',
         'payment_period',
+        'photo', // Pastikan kolom ini sesuai dengan database
     ];
 
     /* Payment Period */
